@@ -28,11 +28,12 @@ public class SimulacionPruebas {
     public static void main(String[] args) {
 
         
-        String path = "./" + "NumerosJava" + "/" + "numsjava.txt";
-        int scale = 8;
+        //String path = "./" + "NumerosJava" + "/" + "numsjava.txt";
+        /*int scale = 8;*/
         
-        /*int totalnums = 1000000;
-        generarRandomsJava(scale,path,totalnums);*/
+        
+        //int totalnums = 1000000;
+        //generarRandomsJava(5,path,totalnums);
         
         /****EJEMPLO DEL LIBRO ***/
         //String path = "./" + "NumerosJava" + "/" + "nums.txt";
@@ -54,10 +55,16 @@ public class SimulacionPruebas {
         /*String path = "./" + "NumerosJava" + "/" + "huecosnums.txt";
         int scale = 4;*/
         
-        int maxTamHueco = 4;//Los huecos empiezan en 0 hasta maxTamHueco-1
+        /*int maxTamHueco = 4;//Los huecos empiezan en 0 hasta maxTamHueco-1
         Prueba_HuecosNums huecos_nums = new Prueba_HuecosNums();
         huecos_nums.runPrueba(path, scale, "NumerosJava",new BigDecimal("0.300")
-        ,new BigDecimal("0.700"),maxTamHueco);
+        ,new BigDecimal("0.700"),maxTamHueco);*/
+        
+       
+        //String path = "./" + "NumerosJava" + "/" + "pruebapoker.txt";
+        String path = "./" + "NumerosJava" + "/" + "numsjavapoker.txt";
+        Prueba_Poker poker = new Prueba_Poker();
+        poker.runPrueba(path, "NumerosJavs");
     }
 
     public static BigDecimal generateRandomBigDecimalFromRange
