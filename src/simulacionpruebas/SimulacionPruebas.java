@@ -67,7 +67,7 @@ public class SimulacionPruebas {
         //poker.runPrueba(path, "NumerosJava");
         
         String path = "./" + "NumerosJava" + "/" + "pruebaseries.txt";
-        int scale = 4;
+        int scale = 8;
         int celdas = 5; //5x5 matrix
         Prueba_Series series = new Prueba_Series();
         BigDecimal tamanocelda = new BigDecimal("0.2");
