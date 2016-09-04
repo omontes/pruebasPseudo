@@ -61,10 +61,17 @@ public class SimulacionPruebas {
         ,new BigDecimal("0.700"),maxTamHueco);*/
         
        
-        String path = "./" + "NumerosJava" + "/" + "pruebapoker.txt";
+        //String path = "./" + "NumerosJava" + "/" + "pruebapoker.txt";
         //String path = "./" + "NumerosJava" + "/" + "numsjavapoker.txt";
-        Prueba_Poker poker = new Prueba_Poker();
-        poker.runPrueba(path, "NumerosJava");
+        //Prueba_Poker poker = new Prueba_Poker();
+        //poker.runPrueba(path, "NumerosJava");
+        
+        String path = "./" + "NumerosJava" + "/" + "pruebaseries.txt";
+        int scale = 4;
+        int celdas = 5; //5x5 matrix
+        Prueba_Series series = new Prueba_Series();
+        BigDecimal tamanocelda = new BigDecimal("0.2");
+        series.runPrueba(path, "NumerosJava",scale,celdas,tamanocelda);
     }
 
     public static BigDecimal generateRandomBigDecimalFromRange
