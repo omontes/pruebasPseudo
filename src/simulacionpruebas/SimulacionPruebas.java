@@ -28,15 +28,15 @@ public class SimulacionPruebas {
     public static void main(String[] args) {
 
         
-        //String path = "./" + "NumerosJava" + "/" + "numsjava.txt";
-        //int scale = 8;
+        String path = "./" + "NumerosJava" + "/" + "numsjava.txt";
+        int scale = 8;
         
         /*int totalnums = 1000000;
         generarRandomsJava(scale,path,totalnums);*/
         
         /****EJEMPLO DEL LIBRO ***/
-        String path = "./" + "NumerosJava" + "/" + "nums.txt";
-        int scale = 4;
+        //String path = "./" + "NumerosJava" + "/" + "nums.txt";
+        //int scale = 4;
         
         //Prueba_Promedios promedios = new Prueba_Promedios();
         //promedios.runPrueba(path,scale);
@@ -48,7 +48,7 @@ public class SimulacionPruebas {
         //corridas.runPrueba(path, scale);
         
         Prueba_HuecosDigs huecos_digitos = new Prueba_HuecosDigs();
-        huecos_digitos.runPrueba(path, scale);
+        huecos_digitos.runPrueba(path, scale, "NumerosJava");
     }
 
     public static BigDecimal generateRandomBigDecimalFromRange

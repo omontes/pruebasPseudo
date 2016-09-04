@@ -6,12 +6,17 @@
 package simulacionpruebas;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static simulacionpruebas.SimulacionPruebas.generarRandom;
 
 /**
  *
@@ -29,15 +34,27 @@ public class Prueba_HuecosDigs {
     int[] huecos_eight = new int[21];
     int[] huecos_nine = new int[21];
     
+    int totalHuecos = 0;
+    BigDecimal chiTotal = BigDecimal.ZERO;
+       
+    
+    
     
     int cantNums = 0;
     public Prueba_HuecosDigs(){};
     
-    public void runPrueba(String path, int scale) {
+    public void runPrueba(String path, int scale, String folder) {
          obtenerHuecos(path);
-         for (int i = 0; i < huecos_four.length; i++) {
-             System.out.println(huecos_four[i]);
-            
+         writeTablaHuecos(folder);
+         System.out.println("Cant total nums: " + cantNums);
+         System.out.println("Cant total huecos: " + totalHuecos);
+         wrtieTablaFrecuencias(folder,scale);
+         System.out.println("Sumatoria chi: " + chiTotal);
+         
+         //Con la tabla del libro con alpha=0.005 y 100 grados --> 140.17 
+         BigDecimal chiTabla = new BigDecimal("140.17");
+         if (chiTotal.compareTo(chiTabla) <= 0) {
+            System.out.println("PASO LA PRUEBA");
         }
      }
      
@@ -101,7 +118,8 @@ public class Prueba_HuecosDigs {
                             if (cont_zero <= 20) {
                                 huecos_zero[cont_zero]++;
                             } else {
-                                System.out.println("Para el dig 0 hueco de: " + cont_zero);
+                                //System.out.println("Para el dig 0 hueco de: " + cont_zero);
+                                totalHuecos++;
                             }
                             cont_zero = 0;
                             continue;
@@ -126,7 +144,8 @@ public class Prueba_HuecosDigs {
                             if (cont_one <= 20) {
                                 huecos_one[cont_one]++;
                             } else {
-                                System.out.println("Para el dig 1 hueco de: "+cont_one);
+                                //System.out.println("Para el dig 1 hueco de: "+cont_one);
+                                totalHuecos++;
                             }
                             cont_one = 0;
                             continue;
@@ -150,7 +169,8 @@ public class Prueba_HuecosDigs {
                             if (cont_two <= 20) {
                                 huecos_two[cont_two]++;
                             } else {
-                                System.out.println("Para el dig 2 hueco de: "+cont_two);
+                                //System.out.println("Para el dig 2 hueco de: "+cont_two);
+                                totalHuecos++;
                             }
                             cont_two = 0;
                             continue;
@@ -174,7 +194,8 @@ public class Prueba_HuecosDigs {
                             if (cont_three <= 20) {
                                 huecos_three[cont_three]++;
                             } else {
-                                System.out.println("Para el dig 3 hueco de: "+cont_three);
+                                //System.out.println("Para el dig 3 hueco de: "+cont_three);
+                                totalHuecos++;
                             }
                             cont_three = 0;
                             continue;
@@ -197,7 +218,8 @@ public class Prueba_HuecosDigs {
                             if (cont_four <= 20) {
                                 huecos_four[cont_four]++;
                             } else {
-                                System.out.println("Para el dig 4 hueco de: "+cont_four);
+                                //System.out.println("Para el dig 4 hueco de: "+cont_four);
+                                totalHuecos++;
                             }
                             cont_four = 0;
                             continue;
@@ -220,7 +242,8 @@ public class Prueba_HuecosDigs {
                             if (cont_five <= 20) {
                                 huecos_five[cont_five]++;
                             } else {
-                                System.out.println("Para el dig 5 hueco de: "+cont_five);
+                                //System.out.println("Para el dig 5 hueco de: "+cont_five);
+                                totalHuecos++;
                             }
                             cont_five = 0;
                             continue;
@@ -243,7 +266,8 @@ public class Prueba_HuecosDigs {
                             if (cont_six <= 20) {
                                 huecos_six[cont_six]++;
                             } else {
-                                System.out.println("Para el dig 6 hueco de: "+cont_six);
+                                //System.out.println("Para el dig 6 hueco de: "+cont_six);
+                                totalHuecos++;
                             }
                             cont_six = 0;
                             continue;
@@ -266,7 +290,8 @@ public class Prueba_HuecosDigs {
                             if (cont_seven <= 20) {
                                 huecos_seven[cont_seven]++;
                             } else {
-                                System.out.println("Para el dig 7 hueco de: "+cont_seven);
+                                //System.out.println("Para el dig 7 hueco de: "+cont_seven);
+                                totalHuecos++;
                             }
                             cont_seven = 0;
                             continue;
@@ -289,7 +314,8 @@ public class Prueba_HuecosDigs {
                             if (cont_eight <= 20) {
                                 huecos_eight[cont_eight]++;
                             } else {
-                                System.out.println("Para el dig 8 hueco de: "+cont_eight);
+                                //System.out.println("Para el dig 8 hueco de: "+cont_eight);
+                                totalHuecos++;
                             }
                             cont_eight = 0;
                             continue;
@@ -312,7 +338,8 @@ public class Prueba_HuecosDigs {
                             if (cont_nine <= 20) {
                                 huecos_nine[cont_nine]++;
                             } else {
-                                System.out.println("Para el dig 9 hueco de: "+cont_nine);
+                                //System.out.println("Para el dig 9 hueco de: "+cont_nine);
+                                totalHuecos++;
                             }
                             cont_nine = 0;
                             continue;
@@ -332,7 +359,7 @@ public class Prueba_HuecosDigs {
             }
                 
             
-            System.out.println("Cant total nums: " + cantNums);
+            
             
 
             
@@ -353,4 +380,95 @@ public class Prueba_HuecosDigs {
         }
         
     }
+
+    private void writeTablaHuecos(String folder) {
+        String path = "./" + folder + "/" + "tablahuecos.csv";
+
+        BufferedWriter out = null;
+        try {
+            FileWriter fstream = new FileWriter(path, true);
+            out = new BufferedWriter(fstream);
+            out.write("Tamano Hueco,0,1,2,3,4,5,6,7,8,9,Total");
+            out.newLine();
+            for (int i = 0; i <= 20; i++) {
+                int total = huecos_zero[i] + huecos_one[i] + huecos_two[i] 
+                        + huecos_three[i]
+                        + huecos_four[i] + huecos_five[i] + huecos_six[i]
+                        + huecos_seven[i] + huecos_eight[i] + huecos_nine[i];
+                totalHuecos += total;
+
+                out.write(i + "," + huecos_zero[i] + "," + huecos_one[i] + "," 
+                        + huecos_two[i] + ","
+                        + huecos_three[i] + "," + huecos_four[i] 
+                        + "," + huecos_five[i] + ","
+                        + huecos_six[i] + "," + huecos_seven[i] 
+                        + "," + huecos_eight[i] + ","
+                        + huecos_nine[i] + "," + total);
+                out.newLine();
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(SimulacionPruebas.class.getName())
+                            .log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+
+    private void wrtieTablaFrecuencias(String folder, int scale) {
+        String path = "./" + folder + "/" + "tablafrecuencias.csv";
+
+        BufferedWriter out = null;
+        try {
+            FileWriter fstream = new FileWriter(path, true);
+            out = new BufferedWriter(fstream);
+            out.write("Huecos,f0,pe,fe,chi");
+            out.newLine();
+            for (int i = 0; i <= 20; i++) {
+                int f0 = huecos_zero[i] + huecos_one[i] + huecos_two[i] 
+                        + huecos_three[i]
+                        + huecos_four[i] + huecos_five[i] + huecos_six[i]
+                        + huecos_seven[i] + huecos_eight[i] + huecos_nine[i];
+                BigDecimal pe = new BigDecimal("0.1").
+                        multiply(new BigDecimal("0.9").pow(i)).
+                        setScale(scale,RoundingMode.HALF_UP);
+                //System.out.println("pe es: "+pe.toString());
+                
+                BigDecimal fe = pe.multiply(new BigDecimal(totalHuecos)).
+                        setScale(scale,RoundingMode.HALF_UP);
+                //System.out.println("fe es: "+fe.toString());
+                
+                BigDecimal chi_aux = (new BigDecimal(f0).subtract(fe)).pow(2).
+                        setScale(scale,RoundingMode.HALF_UP);
+                BigDecimal chi = chi_aux.divide(fe,scale,RoundingMode.HALF_UP);
+                //System.out.println("chi es: "+chi.toString());
+
+                //System.out.println(i);
+                out.write(i + "," + f0 + "," + pe.toString()+"," +fe.toString()
+                        +","+ chi.toString());
+                out.newLine();
+                chiTotal=chiTotal.add(chi);
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(SimulacionPruebas.class.getName())
+                            .log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+
+   
 }
