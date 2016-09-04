@@ -41,6 +41,7 @@ public class Prueba_Poker {
         pruebaPoker(path);
         System.out.println("Cant total nums: " + cantNums);
         
+        writePokerResult(folder);
         System.out.println("*****PRUEBA POKER****");
         System.out.println("Diferentes"+","+diferentes);
         System.out.println("Un par"+","+un_par);
@@ -51,9 +52,9 @@ public class Prueba_Poker {
         System.out.println("Quintilla"+","+quintilla);
         
         System.out.println("");
-        System.out.println("*****Tabla de frecuencias****");
+        
         wrtieTablaFrecuencias(folder);
-        System.out.println("");
+        
         
         System.out.println("Sumatoria chi: " + chiTotal);
          
@@ -119,7 +120,16 @@ public class Prueba_Poker {
 
     private void wrtieTablaFrecuencias(String folder) {
         
-        int scale=8;
+        String path = "./" + folder + "/" + "tablafrecpoker.csv";
+
+        BufferedWriter out = null;
+        try {
+            FileWriter fstream = new FileWriter(path, true);
+            out = new BufferedWriter(fstream);
+            out.write("Clase,f0,pe,fe,chi");
+            out.newLine();
+            
+            int scale=8;
         
         BigDecimal chi_aux = BigDecimal.ZERO;
         BigDecimal chi = BigDecimal.ZERO;
@@ -143,52 +153,116 @@ public class Prueba_Poker {
         chi_aux = (new BigDecimal(diferentes).subtract(fe_diferentes)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
         chi = chi_aux.divide(fe_diferentes,scale,RoundingMode.HALF_UP);
-        System.out.println("Diferentes"+","+diferentes+","+p_diferentes+","
+        out.write("Diferentes"+","+diferentes+","+p_diferentes+","
                 +fe_diferentes+","+chi.toString());
+        out.newLine();
         chiTotal=chiTotal.add(chi);
         
         chi_aux = (new BigDecimal(un_par).subtract(fe_par)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
         chi = chi_aux.divide(fe_par,scale,RoundingMode.HALF_UP);
-        System.out.println("Un par"+","+un_par+","+p_par+","
+        out.write("Un par"+","+un_par+","+p_par+","
                 +fe_par+","+chi.toString());
+        out.newLine();
         chiTotal=chiTotal.add(chi);
         
         chi_aux = (new BigDecimal(dos_par).subtract(fe_doblepar)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
         chi = chi_aux.divide(fe_doblepar,scale,RoundingMode.HALF_UP);
-        System.out.println("Dos pares"+","+dos_par+","+p_doblepar+","
+        out.write("Dos pares"+","+dos_par+","+p_doblepar+","
                 +fe_doblepar+","+chi.toString());
+        out.newLine();
         chiTotal=chiTotal.add(chi);
         
         chi_aux = (new BigDecimal(tercia).subtract(fe_tercia)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
         chi = chi_aux.divide(fe_tercia,scale,RoundingMode.HALF_UP);
-        System.out.println("Tercia"+","+tercia+","+p_tercia+","
+        out.write("Tercia"+","+tercia+","+p_tercia+","
                 +fe_tercia+","+chi.toString());
+        out.newLine();
         chiTotal=chiTotal.add(chi);
         
         chi_aux = (new BigDecimal(full).subtract(fe_full)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
         chi = chi_aux.divide(fe_full,scale,RoundingMode.HALF_UP);
-        System.out.println("Full"+","+full+","+p_full+","
+        out.write("Full"+","+full+","+p_full+","
                 +fe_full+","+chi.toString());
+        out.newLine();
         chiTotal=chiTotal.add(chi);
         
         chi_aux = (new BigDecimal(poker).subtract(fe_poker)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
         chi = chi_aux.divide(fe_poker,scale,RoundingMode.HALF_UP);
-        System.out.println("Poker"+","+poker+","+p_poker+","
+        out.write("Poker"+","+poker+","+p_poker+","
                 +fe_poker+","+chi.toString());
+        out.newLine();
         chiTotal=chiTotal.add(chi);
         
         chi_aux = (new BigDecimal(quintilla).subtract(fe_quintilla)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
         chi = chi_aux.divide(fe_quintilla,scale,RoundingMode.HALF_UP);
-        System.out.println("Quintilla"+","+quintilla+","+p_quintilla+","
+        out.write("Quintilla"+","+quintilla+","+p_quintilla+","
                 +fe_quintilla+","+chi.toString());
+        out.newLine();
         chiTotal=chiTotal.add(chi);
+            
+            
+           
+
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Prueba_Poker.class.getName())
+                            .log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         
         
+        
+        
+    }
+
+    private void writePokerResult(String folder) {
+        String path = "./" + folder + "/" + "pokerestadisticas.csv";
+
+        BufferedWriter out = null;
+        try {
+            FileWriter fstream = new FileWriter(path, true);
+            out = new BufferedWriter(fstream);
+            out.write("Clase,f0");
+            out.newLine();
+            
+            out.write("Diferentes"+","+diferentes);
+            out.newLine();
+            out.write("Un par"+","+un_par);
+            out.newLine();
+            out.write("Dos pares"+","+dos_par);
+            out.newLine();
+            out.write("Tercia"+","+tercia);
+            out.newLine();
+            out.write("Full"+","+full);
+            out.newLine();
+            out.write("Poker"+","+poker);
+            out.newLine();
+            out.write("Quintilla"+","+quintilla);
+            out.newLine();
+
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Prueba_Poker.class.getName())
+                            .log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 }
