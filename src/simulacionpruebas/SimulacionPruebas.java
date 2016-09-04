@@ -47,8 +47,17 @@ public class SimulacionPruebas {
         //Prueba_Corridas corridas = new Prueba_Corridas();
         //corridas.runPrueba(path, scale);
         
-        Prueba_HuecosDigs huecos_digitos = new Prueba_HuecosDigs();
-        huecos_digitos.runPrueba(path, scale, "NumerosJava");
+        //Prueba_HuecosDigs huecos_digitos = new Prueba_HuecosDigs();
+        //huecos_digitos.runPrueba(path, scale, "NumerosJava");
+        
+        
+        /*String path = "./" + "NumerosJava" + "/" + "huecosnums.txt";
+        int scale = 4;*/
+        
+        int maxTamHueco = 4;//Los huecos empiezan en 0 hasta maxTamHueco-1
+        Prueba_HuecosNums huecos_nums = new Prueba_HuecosNums();
+        huecos_nums.runPrueba(path, scale, "NumerosJava",new BigDecimal("0.300")
+        ,new BigDecimal("0.700"),maxTamHueco);
     }
 
     public static BigDecimal generateRandomBigDecimalFromRange
