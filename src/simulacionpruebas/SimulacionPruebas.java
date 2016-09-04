@@ -61,10 +61,10 @@ public class SimulacionPruebas {
         ,new BigDecimal("0.700"),maxTamHueco);*/
         
        
-        //String path = "./" + "NumerosJava" + "/" + "pruebapoker.txt";
-        String path = "./" + "NumerosJava" + "/" + "numsjavapoker.txt";
+        String path = "./" + "NumerosJava" + "/" + "pruebapoker.txt";
+        //String path = "./" + "NumerosJava" + "/" + "numsjavapoker.txt";
         Prueba_Poker poker = new Prueba_Poker();
-        poker.runPrueba(path, "NumerosJavs");
+        poker.runPrueba(path, "NumerosJava");
     }
 
     public static BigDecimal generateRandomBigDecimalFromRange
