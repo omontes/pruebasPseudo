@@ -71,7 +71,8 @@ public class Prueba_Varianza {
 
             if (chicuadrado.compareTo(limSuperior) <= 0
                     && chicuadrado.compareTo(limInferior) >= 0) {
-                System.out.println("PASO LA PRUEBA");
+                System.out.println("PASO LA PRUEBA CON alpha=0.05 y "
+                        + "29 grados de libertad");
             }
 
         } catch (IOException e) {

@@ -43,19 +43,18 @@ public class Prueba_HuecosNums {
         System.out.println("Cant total nums: " + cantNums);
         System.out.println("Cant total huecos: " + totalHuecos);
         
-        System.out.println("");
-        System.out.println("****TABLA DE FRECUENCIAS OBSERVADAS****");
+        System.out.println("TABLA DE FRECUENCIAS OBSERVADAS");
         for (int i = 0; i < huecos.length; i++) {
             System.out.println("h" + i + " --> " + huecos[i]);
         }
-        
-        writeTablaHuecos(folder,maxTamHueco);
+        String rango = inf.toString()+"-"+sup.toString();
+        writeTablaHuecos(folder,maxTamHueco,rango);
          
         System.out.println("");
-        wrtieTablaFrecuencias(folder,scale,maxTamHueco,sup.subtract(inf));
+        wrtieTablaFrecuencias(folder,scale,maxTamHueco,sup.subtract(inf),rango);
         System.out.println("Sumatoria chi: " + chiTotal);
          
-         //Con la tabla del libro con alpha=0.005 y 100 grados --> 140.17 
+         //Con la tabla del libro con alpha=0.005 y 3 grados --> 7.8147 
          BigDecimal chiTabla = new BigDecimal("7.8147");
          if (chiTotal.compareTo(chiTabla) <= 0) {
             System.out.println("PASO LA PRUEBA PARA alpha=0.05 y n grados=3");
@@ -120,8 +119,8 @@ public class Prueba_HuecosNums {
         }
     }
 
-    private void writeTablaHuecos(String folder, int maxHuecos) {
-        String path = "./" + folder + "/" + "tablahuecosnums.csv";
+    private void writeTablaHuecos(String folder, int maxHuecos, String rango) {
+        String path = "./" + folder + "/" + "tablahuecosnums"+rango+".csv";
 
         BufferedWriter out = null;
         try {
@@ -152,8 +151,8 @@ public class Prueba_HuecosNums {
 
 
     private void wrtieTablaFrecuencias(String folder, int scale, int maxHueco,
-            BigDecimal t) {
-         String path = "./" + folder + "/" + "tablafrecuenciasnums.csv";
+            BigDecimal t, String rango) {
+         String path = "./" + folder + "/" + "tablafrecuenciasnums"+rango+".csv";
 
         BufferedWriter out = null;
         try {

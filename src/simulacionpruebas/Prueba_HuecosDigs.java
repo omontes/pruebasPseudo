@@ -54,7 +54,8 @@ public class Prueba_HuecosDigs {
          //Con la tabla del libro con alpha=0.005 y 100 grados --> 140.17 
          BigDecimal chiTabla = new BigDecimal("140.17");
          if (chiTotal.compareTo(chiTabla) <= 0) {
-            System.out.println("PASO LA PRUEBA");
+            System.out.println("PASO LA PRUEBA con alpha=0.005 y"
+                    + " 100 grados --> 140.17");
         }
      }
      
@@ -382,7 +383,7 @@ public class Prueba_HuecosDigs {
     }
 
     private void writeTablaHuecos(String folder) {
-        String path = "./" + folder + "/" + "tablahuecos.csv";
+        String path = "./" + folder + "/" + "tablahuecosdigs.csv";
 
         BufferedWriter out = null;
         try {
@@ -422,7 +423,7 @@ public class Prueba_HuecosDigs {
     }
 
     private void wrtieTablaFrecuencias(String folder, int scale) {
-        String path = "./" + folder + "/" + "tablafrecuencias.csv";
+        String path = "./" + folder + "/" + "tablafrecuenciasdigs.csv";
 
         BufferedWriter out = null;
         try {

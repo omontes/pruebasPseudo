@@ -28,9 +28,10 @@ public class SimulacionPruebas {
     public static void main(String[] args) {
 
         
-        //String path = "./" + "NumerosJava" + "/" + "numsjava.txt";
-        /*int scale = 8;*/
+        String pathPython = "./" + "NumerosPython" + "/" + "randspython.txt";
+        int scale = 8;
         
+        correrPruebasPython(pathPython, scale, "NumerosPython");
         
         //int totalnums = 1000000;
         //generarRandomsJava(5,path,totalnums);
@@ -39,7 +40,7 @@ public class SimulacionPruebas {
         //String path = "./" + "NumerosJava" + "/" + "nums.txt";
         //int scale = 4;
         
-        //Prueba_Promedios promedios = new Prueba_Promedios();
+       // Prueba_Promedios promedios = new Prueba_Promedios();
         //promedios.runPrueba(path,scale);
         
         //Prueba_Varianza varianza = new Prueba_Varianza();
@@ -66,12 +67,12 @@ public class SimulacionPruebas {
         //Prueba_Poker poker = new Prueba_Poker();
         //poker.runPrueba(path, "NumerosJava");
         
-        String path = "./" + "NumerosJava" + "/" + "pruebaseries.txt";
+        /*String path = "./" + "NumerosJava" + "/" + "pruebaseries.txt";
         int scale = 8;
         int celdas = 5; //5x5 matrix
         Prueba_Series series = new Prueba_Series();
         BigDecimal tamanocelda = new BigDecimal("0.2");
-        series.runPrueba(path, "NumerosJava",scale,celdas,tamanocelda);
+        series.runPrueba(path, "NumerosJava",scale,celdas,tamanocelda);*/
     }
 
     public static BigDecimal generateRandomBigDecimalFromRange
@@ -115,6 +116,79 @@ public class SimulacionPruebas {
             }
         }
 
+        
+    }
+
+    private static void correrPruebasPython(String path, int scale, String folder) {
+        System.out.println("*******PRUEBA PROMEDIOS*********");
+        Prueba_Promedios promedios = new Prueba_Promedios();
+        promedios.runPrueba(path,scale);
+        System.out.println("");
+        
+        System.out.println("*******PRUEBA VARIANZA*********");
+        Prueba_Varianza varianza = new Prueba_Varianza();
+        varianza.runPrueba(path,scale);
+        System.out.println("");
+        
+        System.out.println("*******PRUEBA CORRIDAS*********");
+        Prueba_Corridas corridas = new Prueba_Corridas();
+        corridas.runPrueba(path, scale);
+        System.out.println("");
+        
+        System.out.println("*******PRUEBA HUECOS CON DIGS*********");
+        Prueba_HuecosDigs huecos_digitos = new Prueba_HuecosDigs();
+        huecos_digitos.runPrueba(path, scale, folder);
+        System.out.println("Ver frecuencias en: tablafrecuenciasdigs.csv");
+        System.out.println("Ver tabla huecos en: tablahuecosdigs.csv");
+        System.out.println("");
+        
+        System.out.println("*******PRUEBA HUECOS CON NUMS*********");
+        int maxTamHueco = 4;//Los huecos empiezan en 0 hasta maxTamHueco-1
+        Prueba_HuecosNums huecos_nums = new Prueba_HuecosNums();
+        System.out.println("RANGO [0.30,0.70]");
+        huecos_nums.runPrueba(path, scale, folder ,new BigDecimal("0.300")
+        ,new BigDecimal("0.700"),maxTamHueco);
+        System.out.println("Ver frecuencias en: tablafrecuenciasnumsX.csv");
+        System.out.println("Ver tabla huecos en: tablahuecosnumsX.csv");
+        System.out.println("");
+        
+        System.out.println("RANGO [0.40,0.60]");
+        huecos_nums.runPrueba(path, scale, folder ,new BigDecimal("0.400")
+        ,new BigDecimal("0.600"),maxTamHueco);
+        System.out.println("Ver frecuencias en: tablafrecuenciasnumsX.csv");
+        System.out.println("Ver tabla huecos en: tablahuecosnumsX.csv");
+        System.out.println("");
+        
+        System.out.println("RANGO [0.20,0.80]");
+        huecos_nums.runPrueba(path, scale, folder ,new BigDecimal("0.200")
+        ,new BigDecimal("0.800"),maxTamHueco);
+        System.out.println("Ver frecuencias en: tablafrecuenciasnumsX.csv");
+        System.out.println("Ver tabla huecos en: tablahuecosnumsX.csv");
+        System.out.println("");
+        
+        System.out.println("RANGO [0.15,0.85]");
+        huecos_nums.runPrueba(path, scale, folder ,new BigDecimal("0.150")
+        ,new BigDecimal("0.850"),maxTamHueco);
+        System.out.println("Ver frecuencias en: tablafrecuenciasnumsX.csv");
+        System.out.println("Ver tabla huecos en: tablahuecosnumsX.csv");
+        System.out.println("");
+        
+        System.out.println("*******PRUEBA POKER*********");
+        Prueba_Poker poker = new Prueba_Poker();
+        poker.runPrueba(path, folder);
+        System.out.println("Ver frecuencias en: tablafrecpoker.csv");
+        System.out.println("Ver tabla pokerestadisticas.csv");
+        System.out.println("");
+        
+        System.out.println("*******PRUEBA SERIES*********");
+        int celdas = 5; //5x5 matrix
+        Prueba_Series series = new Prueba_Series();
+        BigDecimal tamanocelda = new BigDecimal("0.2");
+        series.runPrueba(path, folder,scale,celdas,tamanocelda);
+        System.out.println("Ver frecuencias en: frecuenciaseries.csv");
+        System.out.println("Ver tabla tablaseries.csv");
+        System.out.println("");
+        
         
     }
 

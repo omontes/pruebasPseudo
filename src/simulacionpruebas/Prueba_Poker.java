@@ -42,7 +42,7 @@ public class Prueba_Poker {
         System.out.println("Cant total nums: " + cantNums);
         
         writePokerResult(folder);
-        System.out.println("*****PRUEBA POKER****");
+        System.out.println("POKER ESTADISTICAS");
         System.out.println("Diferentes"+","+diferentes);
         System.out.println("Un par"+","+un_par);
         System.out.println("Dos pares"+","+dos_par);
@@ -58,7 +58,7 @@ public class Prueba_Poker {
         
         System.out.println("Sumatoria chi: " + chiTotal);
          
-         //Con la tabla del libro con alpha=0.005 y 100 grados --> 140.17 
+         //Con la tabla del libro con alpha=0.005 y 6 grados --> 12.5916 
          BigDecimal chiTabla = new BigDecimal("12.5916");
          if (chiTotal.compareTo(chiTabla) <= 0) {
             System.out.println("PASO LA PRUEBA PARA alpha=0.05 y n grados=6");

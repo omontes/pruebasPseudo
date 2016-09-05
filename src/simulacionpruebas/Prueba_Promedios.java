@@ -64,7 +64,8 @@ public class Prueba_Promedios {
             //Prueba de promedios seria
             if (z0.compareTo(tstudent) <= 0
                     && z0.compareTo(tstudent.negate()) >= 0) {
-                System.out.println("PASO LA PRUEBA");
+                System.out.println("PASO LA PRUEBA CON alpha=0.025 y"
+                        + " t-student 1.645 para n infinito");
             }
             
             //Prueba con limites superior e inferior [Intervalo]
@@ -80,7 +81,7 @@ public class Prueba_Promedios {
             
             if (promedio.compareTo(limSuperior) <= 0
                     && promedio.compareTo(limInferior) >= 0) {
-                System.out.println("PASO LA PRUEBA");
+                System.out.println("PASO LA PRUEBA UTILIZANDO LOS LIMITES");
             }
             
             

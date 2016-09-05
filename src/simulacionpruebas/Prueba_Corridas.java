@@ -38,7 +38,8 @@ public class Prueba_Corridas {
         //Prueba de promedios seria
         if (z0.compareTo(normal) <= 0
                 && z0.compareTo(normal.negate()) >= 0) {
-            System.out.println("PASO LA PRUEBA");
+            System.out.println("PASO LA PRUEBA Con alpha = 0.05 y"
+                    + " n--> infinito la tabla normal da 1.960");
         }
     }
 
