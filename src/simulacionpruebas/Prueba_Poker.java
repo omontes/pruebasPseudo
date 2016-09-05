@@ -83,7 +83,6 @@ public class Prueba_Poker {
                 String[] numberarray = sCurrentLine.split("\\.");
                 char[] digitsarray = numberarray[1].toCharArray();
                 Card player1[] = new Card[5];
-
                 // MANO POKER
                 player1[0] = new Card(Character.getNumericValue(digitsarray[0]));
                 player1[1] = new Card(Character.getNumericValue(digitsarray[1]));
