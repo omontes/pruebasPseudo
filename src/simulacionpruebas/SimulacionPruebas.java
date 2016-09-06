@@ -36,9 +36,9 @@ public class SimulacionPruebas {
         int scaleJava = 8;
         probarPruebas(pathJava, scaleJava, "NumerosJava");*/
         
-        String pathMaxima = "./" + "NumerosMaxima" + "/" + "numerosmaxima.txt";
+        /*String pathMaxima = "./" + "NumerosMaxima" + "/" + "numerosmaxima.txt";
         int scaleMaxima = 8;
-        probarPruebas(pathMaxima, scaleMaxima, "NumerosMaxima");
+        probarPruebas(pathMaxima, scaleMaxima, "NumerosMaxima");*/
         
         /*String pathC = "./" + "NumerosC" + "/" + "numsc.txt";
         int scaleC = 8;
@@ -48,7 +48,7 @@ public class SimulacionPruebas {
         
         
         
-        //probarLibro("NumerosLibro");
+        probarLibro("NumerosLibro");
         
         
         /*------GENERAR NUM RANDOMS EN JAVA -----*/
@@ -104,7 +104,7 @@ public class SimulacionPruebas {
     }
 
     private static void probarLibro(String folder){
-        System.out.println("*******PRUEBA PROMEDIOS*********");
+        /*System.out.println("*******PRUEBA PROMEDIOS*********");
         String pathPromedioVarCorridas = "./" + folder + "/" + "nums.txt";
         int scalePromedioVarCorridas = 4;
         Prueba_Promedios promedios = new Prueba_Promedios();
@@ -164,7 +164,7 @@ public class SimulacionPruebas {
         ,new BigDecimal("0.850"),maxTamHueco);
         System.out.println("Ver frecuencias en: tablafrecuenciasnumsX.csv");
         System.out.println("Ver tabla huecos en: tablahuecosnumsX.csv");
-        System.out.println("");
+        System.out.println("");*/
         
         System.out.println("*******PRUEBA POKER*********");
         String pathPoker = "./" + folder + "/" + "pruebapoker.txt";
@@ -174,7 +174,7 @@ public class SimulacionPruebas {
         System.out.println("Ver tabla pokerestadisticas.csv");
         System.out.println("");
         
-        System.out.println("*******PRUEBA SERIES*********");
+        /*System.out.println("*******PRUEBA SERIES*********");
         String pathSeriesNums = "./" + folder + "/" + "pruebaseries.txt";
         int celdas = 5; //5x5 matrix
         int scalePoker = 8;
@@ -183,7 +183,7 @@ public class SimulacionPruebas {
         series.runPrueba(pathSeriesNums, folder,scalePoker,celdas,tamanocelda);
         System.out.println("Ver frecuencias en: frecuenciaseries.csv");
         System.out.println("Ver tabla tablaseries.csv");
-        System.out.println("");
+        System.out.println("");*/
     }
     private static void probarPruebas(String path, int scale, String folder) {
         System.out.println("*******PRUEBA PROMEDIOS*********");
