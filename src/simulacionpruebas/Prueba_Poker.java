@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import poker.Card;
@@ -120,7 +121,16 @@ public class Prueba_Poker {
     private void wrtieTablaFrecuencias(String folder) {
         
         String path = "./" + folder + "/" + "tablafrecpoker.csv";
+        ArrayList<String> lines = new ArrayList<String>();
+        
 
+        lines.add("\\begin{table}");
+        lines.add("\\centering");
+        lines.add("\\begin{tabular}{cccc}");//4 columnas = cccc
+        lines.add("\\" +"\\"+"\\" + "hline");
+        lines.add("Clase&f0&pe&chi"+"\\" +"\\"+"\\" + "hline");
+        
+                
         BufferedWriter out = null;
         try {
             FileWriter fstream = new FileWriter(path, true);
@@ -156,6 +166,7 @@ public class Prueba_Poker {
                 +fe_diferentes+","+chi.toString());
         out.newLine();
         chiTotal=chiTotal.add(chi);
+        lines.add("Diferentes&"+diferentes+"&"+p_quintilla+"&"+chi.toString()+"\\" +"\\");
         
         chi_aux = (new BigDecimal(un_par).subtract(fe_par)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
@@ -164,6 +175,7 @@ public class Prueba_Poker {
                 +fe_par+","+chi.toString());
         out.newLine();
         chiTotal=chiTotal.add(chi);
+        lines.add("Un par&"+un_par+"&"+p_par+"&"+chi.toString()+"\\" +"\\");
         
         chi_aux = (new BigDecimal(dos_par).subtract(fe_doblepar)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
@@ -172,6 +184,7 @@ public class Prueba_Poker {
                 +fe_doblepar+","+chi.toString());
         out.newLine();
         chiTotal=chiTotal.add(chi);
+        lines.add("Dos pares&"+dos_par+"&"+p_doblepar+"&"+chi.toString()+"\\" +"\\");
         
         chi_aux = (new BigDecimal(tercia).subtract(fe_tercia)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
@@ -180,6 +193,7 @@ public class Prueba_Poker {
                 +fe_tercia+","+chi.toString());
         out.newLine();
         chiTotal=chiTotal.add(chi);
+        lines.add("Tercia&"+tercia+"&"+p_tercia+"&"+chi.toString()+"\\" +"\\");
         
         chi_aux = (new BigDecimal(full).subtract(fe_full)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
@@ -188,6 +202,7 @@ public class Prueba_Poker {
                 +fe_full+","+chi.toString());
         out.newLine();
         chiTotal=chiTotal.add(chi);
+        lines.add("Full&"+full+"&"+p_full+"&"+chi.toString()+"\\" +"\\");
         
         chi_aux = (new BigDecimal(poker).subtract(fe_poker)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
@@ -196,6 +211,7 @@ public class Prueba_Poker {
                 +fe_poker+","+chi.toString());
         out.newLine();
         chiTotal=chiTotal.add(chi);
+        lines.add("Poker&"+poker+"&"+p_poker+"&"+chi.toString()+"\\" +"\\");
         
         chi_aux = (new BigDecimal(quintilla).subtract(fe_quintilla)).pow(2).
                     setScale(scale,RoundingMode.HALF_UP);
@@ -204,6 +220,21 @@ public class Prueba_Poker {
                 +fe_quintilla+","+chi.toString());
         out.newLine();
         chiTotal=chiTotal.add(chi);
+        lines.add("Quintilla&"+quintilla+"&"+p_quintilla+"&"+chi.toString()
+                +"\\" + "\\" + "\\" + "hline");
+        lines.add("Total & & &"+chiTotal.toString()
+                +"\\" + "\\" + "\\" + "hline");
+        lines.add("\\end{tabular}");
+        lines.add("\\caption{\\label{tab:frecpoker"+folder+"}"
+                + "Frecuencias poker para "+folder+"}");
+        lines.add("\\end{table}");
+        
+            
+        System.out.println("LATEX DE TABLA FREC POKER");
+        for (String line : lines) {
+            System.out.println(line);
+        }
+        System.out.println("");
             
             
            
@@ -228,7 +259,12 @@ public class Prueba_Poker {
 
     private void writePokerResult(String folder) {
         String path = "./" + folder + "/" + "pokerestadisticas.csv";
-
+        ArrayList<String> lines = new ArrayList<String>();
+        lines.add("\\begin{table}");
+        lines.add("\\centering");
+        lines.add("\\begin{tabular}{cc}");//4 columnas = cccc
+        lines.add("\\" +"\\"+"\\" + "hline");
+        lines.add("Clase&f0"+"\\" +"\\"+"\\" + "hline");
         BufferedWriter out = null;
         try {
             FileWriter fstream = new FileWriter(path, true);
@@ -237,19 +273,38 @@ public class Prueba_Poker {
             out.newLine();
             
             out.write("Diferentes"+","+diferentes);
+            lines.add("Diferentes&"+diferentes+"\\" + "\\");
             out.newLine();
             out.write("Un par"+","+un_par);
+            lines.add("Un par&"+un_par+"\\" + "\\" + "\\");
             out.newLine();
             out.write("Dos pares"+","+dos_par);
+            lines.add("Dos pares&"+dos_par+"\\" + "\\");
             out.newLine();
             out.write("Tercia"+","+tercia);
+            lines.add("Tercia&"+tercia+"\\" + "\\");
             out.newLine();
             out.write("Full"+","+full);
+            lines.add("Full&"+full+"\\" + "\\");
             out.newLine();
             out.write("Poker"+","+poker);
+            lines.add("Poker&"+poker+"\\" + "\\");
             out.newLine();
             out.write("Quintilla"+","+quintilla);
+            lines.add("Quintilla&"+quintilla+"\\" + "\\" + "\\" + "hline");
             out.newLine();
+            
+            lines.add("\\end{tabular}");
+            lines.add("\\caption{\\label{tab:estadistpoker"+folder+"}"
+                    + "Estadisticas poker para "+folder+"}");
+            lines.add("\\end{table}");
+            
+            System.out.println("");
+            System.out.println("LATEX DE TABLA ESTADISTICAS POKER");
+            for (String line : lines) {
+                System.out.println(line);
+            }
+            System.out.println("");
 
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
