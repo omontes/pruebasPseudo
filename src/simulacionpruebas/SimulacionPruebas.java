@@ -104,9 +104,11 @@ public class SimulacionPruebas {
     }
 
     private static void probarLibro(String folder){
-        /*System.out.println("*******PRUEBA PROMEDIOS*********");
+        
         String pathPromedioVarCorridas = "./" + folder + "/" + "nums.txt";
         int scalePromedioVarCorridas = 4;
+        /*
+        System.out.println("*******PRUEBA PROMEDIOS*********");
         Prueba_Promedios promedios = new Prueba_Promedios();
         promedios.runPrueba(pathPromedioVarCorridas,scalePromedioVarCorridas);
         System.out.println("");
@@ -119,19 +121,18 @@ public class SimulacionPruebas {
         System.out.println("*******PRUEBA CORRIDAS*********");
         Prueba_Corridas corridas = new Prueba_Corridas();
         corridas.runPrueba(pathPromedioVarCorridas, scalePromedioVarCorridas);
-        System.out.println("");
+        System.out.println("");*/
         
         System.out.println("*******PRUEBA HUECOS CON DIGS*********");
         Prueba_HuecosDigs huecos_digitos = new Prueba_HuecosDigs();
         huecos_digitos.runPrueba(pathPromedioVarCorridas, scalePromedioVarCorridas, folder);
         System.out.println("Ver frecuencias en: tablafrecuenciasdigs.csv");
         System.out.println("Ver tabla huecos en: tablahuecosdigs.csv");
-        System.out.println("");*/
+        System.out.println("");
         
         
-        String pathHuecosNums = "./" + folder + "/" + "huecosnums.txt";
-        int scalePromedioVarCorridas = 4;
-        
+        /*String pathHuecosNums = "./" + folder + "/" + "huecosnums.txt";
+               
         System.out.println("*******PRUEBA HUECOS CON NUMS*********");
         int maxTamHueco = 4;//Los huecos empiezan en 0 hasta maxTamHueco-1
         Prueba_HuecosNums huecos_nums = new Prueba_HuecosNums();

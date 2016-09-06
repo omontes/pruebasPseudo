@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -384,7 +385,16 @@ public class Prueba_HuecosDigs {
 
     private void writeTablaHuecos(String folder) {
         String path = "./" + folder + "/" + "tablahuecosdigs.csv";
+        
+        ArrayList<String> lines = new ArrayList<String>();
+        
 
+        lines.add("\\begin{table}");
+        lines.add("\\centering");
+        lines.add("\\begin{tabular}{cccccccccccc}");//5 columnas = cccc
+        lines.add("\\" +"\\"+"\\" + "hline");
+        lines.add("Tam Hueco&0&1&2&3&4&5&6&7&8&9&Total"+"\\" +"\\"+"\\" + "hline");
+        
         BufferedWriter out = null;
         try {
             FileWriter fstream = new FileWriter(path, true);
@@ -405,8 +415,23 @@ public class Prueba_HuecosDigs {
                         + huecos_six[i] + "," + huecos_seven[i] 
                         + "," + huecos_eight[i] + ","
                         + huecos_nine[i] + "," + total);
+                lines.add(i+"&"+huecos_zero[i]+"&"+huecos_one[i]+"&"+huecos_two[i]+"&"
+                    +huecos_three[i]+"&"+huecos_four[i]+"&"+huecos_five[i]+"&"+huecos_six[i]+"&"
+                            +huecos_seven[i]+"&"+huecos_eight[i]+"&"
+                        +huecos_nine[i]+"&"+total+"\\" +"\\");
                 out.newLine();
             }
+            lines.add("\\" +"\\"+"\\" + "hline");
+            lines.add("\\end{tabular}");
+            lines.add("\\caption{\\label{tab:huecosdigs"+folder+"}"
+                + "Tabla de huecos digs para "+folder+"}");
+            lines.add("\\end{table}");
+            
+            System.out.println("LATEX DE TABLA HUECOS DIGS");
+            for (String line : lines) {
+                System.out.println(line);
+            }
+            System.out.println("");
 
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
@@ -424,7 +449,15 @@ public class Prueba_HuecosDigs {
 
     private void wrtieTablaFrecuencias(String folder, int scale) {
         String path = "./" + folder + "/" + "tablafrecuenciasdigs.csv";
+        
+        ArrayList<String> lines = new ArrayList<String>();
+        
 
+        lines.add("\\begin{table}");
+        lines.add("\\centering");
+        lines.add("\\begin{tabular}{ccccc}");//5 columnas = cccc
+        lines.add("\\" +"\\"+"\\" + "hline");
+        lines.add("Huecos&f0&pe&fe&chi"+"\\" +"\\"+"\\" + "hline");
         BufferedWriter out = null;
         try {
             FileWriter fstream = new FileWriter(path, true);
@@ -454,8 +487,23 @@ public class Prueba_HuecosDigs {
                 out.write(i + "," + f0 + "," + pe.toString()+"," +fe.toString()
                         +","+ chi.toString());
                 out.newLine();
+                lines.add(i+"&"+f0+"&"+pe.toString()+"&"+fe.toString()+"&"
+                    +chi.toString()+"\\" +"\\");
                 chiTotal=chiTotal.add(chi);
             }
+            lines.add("\\" +"\\"+"\\" + "hline");
+            lines.add("Total & & & &"+chiTotal.toString()
+                +"\\" + "\\" + "\\" + "hline");
+            lines.add("\\end{tabular}");
+            lines.add("\\caption{\\label{tab:frechuecosdigs"+folder+"}"
+                + "Frecuencias huecos digs para "+folder+"}");
+            lines.add("\\end{table}");
+            
+            System.out.println("LATEX DE TABLA FREC HUECOS DIGS");
+            for (String line : lines) {
+                System.out.println(line);
+            }
+            System.out.println("");
 
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());

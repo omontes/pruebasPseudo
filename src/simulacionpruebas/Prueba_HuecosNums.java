@@ -179,7 +179,7 @@ public class Prueba_HuecosNums {
             //PARA CALCULAR EL ULTIMO HUECO 
             this.escribirUltimo(huecos[maxHueco-1],maxHueco-1,scale,out,t,lines);
             lines.add("\\" +"\\"+"\\" + "hline");
-            lines.add("Total & &"+chiTotal.toString()
+            lines.add("Total & & & &"+chiTotal.toString()
                 +"\\" + "\\" + "\\" + "hline");
             lines.add("\\end{tabular}");
             lines.add("\\caption{\\label{tab:frechuecosnums"+folder+"}"
