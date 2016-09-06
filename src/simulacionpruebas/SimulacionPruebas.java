@@ -126,10 +126,11 @@ public class SimulacionPruebas {
         huecos_digitos.runPrueba(pathPromedioVarCorridas, scalePromedioVarCorridas, folder);
         System.out.println("Ver frecuencias en: tablafrecuenciasdigs.csv");
         System.out.println("Ver tabla huecos en: tablahuecosdigs.csv");
-        System.out.println("");
+        System.out.println("");*/
         
         
         String pathHuecosNums = "./" + folder + "/" + "huecosnums.txt";
+        int scalePromedioVarCorridas = 4;
         
         System.out.println("*******PRUEBA HUECOS CON NUMS*********");
         int maxTamHueco = 4;//Los huecos empiezan en 0 hasta maxTamHueco-1
@@ -164,9 +165,9 @@ public class SimulacionPruebas {
         ,new BigDecimal("0.850"),maxTamHueco);
         System.out.println("Ver frecuencias en: tablafrecuenciasnumsX.csv");
         System.out.println("Ver tabla huecos en: tablahuecosnumsX.csv");
-        System.out.println("");*/
+        System.out.println("");
         
-        System.out.println("*******PRUEBA POKER*********");
+        /*System.out.println("*******PRUEBA POKER*********");
         String pathPoker = "./" + folder + "/" + "pruebapoker.txt";
         Prueba_Poker poker = new Prueba_Poker();
         poker.runPrueba(pathPoker, folder);
@@ -174,7 +175,7 @@ public class SimulacionPruebas {
         System.out.println("Ver tabla pokerestadisticas.csv");
         System.out.println("");
         
-        /*System.out.println("*******PRUEBA SERIES*********");
+        System.out.println("*******PRUEBA SERIES*********");
         String pathSeriesNums = "./" + folder + "/" + "pruebaseries.txt";
         int celdas = 5; //5x5 matrix
         int scalePoker = 8;

@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -147,7 +148,12 @@ public class Prueba_Series {
 
     private void writeTablaFrecuencias(String folder, int scale) {
         String path = "./" + folder + "/" + "frecuenciaseries.csv";
-
+        ArrayList<String> lines = new ArrayList<String>();
+        lines.add("\\begin{table}");
+        lines.add("\\centering");
+        lines.add("\\begin{tabular}{ccc}");//3 columnas = cccc
+        lines.add("\\" +"\\"+"\\" + "hline");
+        lines.add("Celda&f0&chi"+"\\" +"\\"+"\\" + "hline");
         BufferedWriter out = null;
         try {
             FileWriter fstream = new FileWriter(path, true);
@@ -171,12 +177,26 @@ public class Prueba_Series {
 
                     //System.out.println(i);
                     out.write(contador + "," + f0 + "," + chi.toString());
+                    lines.add(contador+"&"+f0+"&"+chi.toString()+"\\" +"\\");
                     out.newLine();
                     chiTotal = chiTotal.add(chi);
                     contador++;
                 }
 
             }
+            lines.add("\\" +"\\"+"\\" + "hline");
+            lines.add("Total & &"+chiTotal.toString()
+                +"\\" + "\\" + "\\" + "hline");
+            lines.add("\\end{tabular}");
+            lines.add("\\caption{\\label{tab:frecseries"+folder+"}"
+                + "Frecuencias series para "+folder+"}");
+            lines.add("\\end{table}");
+            
+            System.out.println("LATEX DE TABLA FREC SERIES");
+            for (String line : lines) {
+                System.out.println(line);
+            }
+            System.out.println("");
 
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());

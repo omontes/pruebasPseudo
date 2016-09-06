@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -152,7 +153,16 @@ public class Prueba_HuecosNums {
 
     private void wrtieTablaFrecuencias(String folder, int scale, int maxHueco,
             BigDecimal t, String rango) {
-         String path = "./" + folder + "/" + "tablafrecuenciasnums"+rango+".csv";
+        String path = "./" + folder + "/" + "tablafrecuenciasnums"+rango+".csv";
+        
+        ArrayList<String> lines = new ArrayList<String>();
+        
+
+        lines.add("\\begin{table}");
+        lines.add("\\centering");
+        lines.add("\\begin{tabular}{ccccc}");//5 columnas = cccc
+        lines.add("\\" +"\\"+"\\" + "hline");
+        lines.add("Huecos&f0&pe&fe&chi"+"\\" +"\\"+"\\" + "hline");
 
         BufferedWriter out = null;
         try {
@@ -162,11 +172,25 @@ public class Prueba_HuecosNums {
             out.newLine();
             for (int i = 0; i < maxHueco-1; i++) {
                 int f0 = huecos[i];
-                this.escribirResult(f0,i,scale,out,t);
+                this.escribirResult(f0,i,scale,out,t,lines);
+                
                 
             }
             //PARA CALCULAR EL ULTIMO HUECO 
-            this.escribirUltimo(huecos[maxHueco-1],maxHueco-1,scale,out,t);
+            this.escribirUltimo(huecos[maxHueco-1],maxHueco-1,scale,out,t,lines);
+            lines.add("\\" +"\\"+"\\" + "hline");
+            lines.add("Total & &"+chiTotal.toString()
+                +"\\" + "\\" + "\\" + "hline");
+            lines.add("\\end{tabular}");
+            lines.add("\\caption{\\label{tab:frechuecosnums"+folder+"}"
+                + "Frecuencias huecos nums para "+folder+" "+rango+"}");
+            lines.add("\\end{table}");
+            
+            System.out.println("LATEX DE TABLA FREC HUECOS NUMS");
+            for (String line : lines) {
+                System.out.println(line);
+            }
+            System.out.println("");
 
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
@@ -184,7 +208,7 @@ public class Prueba_HuecosNums {
 
     /*contempla la formula de p(x)= (1-t)^x */
     private void escribirUltimo(int f0, int i, int scale, BufferedWriter out,
-            BigDecimal t){
+            BigDecimal t, ArrayList<String> lines){
         try {
             BigDecimal pe = (BigDecimal.ONE.subtract(t)).pow(i).
                     setScale(scale,RoundingMode.HALF_UP);
@@ -202,6 +226,8 @@ public class Prueba_HuecosNums {
             //System.out.println(i);
             out.write(i + "," + f0 + "," + pe.toString()+"," +fe.toString()
                     +","+ chi.toString());
+            lines.add(i+"&"+f0+"&"+pe.toString()+"&"+fe.toString()+"&"
+                    +chi.toString()+"\\" +"\\");
             out.newLine();
             chiTotal=chiTotal.add(chi);
         } catch (IOException ex) {
@@ -211,7 +237,7 @@ public class Prueba_HuecosNums {
                 
     }
     private void escribirResult(int f0, int i, int scale, BufferedWriter out, 
-            BigDecimal t) {
+            BigDecimal t, ArrayList<String> lines) {
         try {
             BigDecimal pe = t.
                     multiply((BigDecimal.ONE.subtract(t)).pow(i)).
@@ -231,6 +257,8 @@ public class Prueba_HuecosNums {
             out.write(i + "," + f0 + "," + pe.toString()+"," +fe.toString()
                     +","+ chi.toString());
             out.newLine();
+            lines.add(i+"&"+f0+"&"+pe.toString()+"&"+fe.toString()+"&"
+                    +chi.toString()+"\\" +"\\");
             chiTotal=chiTotal.add(chi);
         } catch (IOException ex) {
             Logger.getLogger(Prueba_HuecosNums.
