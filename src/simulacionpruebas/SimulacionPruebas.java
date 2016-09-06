@@ -28,27 +28,27 @@ public class SimulacionPruebas {
     public static void main(String[] args) {
 
         
-        /*String pathPython = "./" + "NumerosPython" + "/" + "randspython.txt";
+        String pathPython = "./" + "NumerosPython" + "/" + "randspython.txt";
         int scalePython = 8;
-        probarPruebas(pathPython, scalePython, "NumerosPython");*/
+        probarPruebas(pathPython, scalePython, "NumerosPython");
         
-        /*String pathJava = "./" + "NumerosJava" + "/" + "numsjava.txt";
+        String pathJava = "./" + "NumerosJava" + "/" + "numsjava.txt";
         int scaleJava = 8;
-        probarPruebas(pathJava, scaleJava, "NumerosJava");*/
+        probarPruebas(pathJava, scaleJava, "NumerosJava");
         
-        /*String pathMaxima = "./" + "NumerosMaxima" + "/" + "numerosmaxima.txt";
+        String pathMaxima = "./" + "NumerosMaxima" + "/" + "numerosmaxima.txt";
         int scaleMaxima = 8;
-        probarPruebas(pathMaxima, scaleMaxima, "NumerosMaxima");*/
+        probarPruebas(pathMaxima, scaleMaxima, "NumerosMaxima");
         
-        /*String pathC = "./" + "NumerosC" + "/" + "numsc.txt";
+        String pathC = "./" + "NumerosC" + "/" + "numsc.txt";
         int scaleC = 8;
-        probarPruebas(pathC, scaleC, "NumerosC");*/
+        probarPruebas(pathC, scaleC, "NumerosC");
         
         
         
         
         
-        probarLibro("NumerosLibro");
+        //probarLibro("NumerosLibro");
         
         
         /*------GENERAR NUM RANDOMS EN JAVA -----*/

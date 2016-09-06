@@ -7,7 +7,7 @@ package poker;
 
 /**
  *
- * @author Oscar Montes
+ * @author Se baso el codigo con https://github.com/mashlol/Poker-Hand-Evaluator
  */
 public class Card {
     private int rank;
