@@ -107,7 +107,7 @@ public class SimulacionPruebas {
         
         String pathPromedioVarCorridas = "./" + folder + "/" + "nums.txt";
         int scalePromedioVarCorridas = 4;
-        /*
+        
         System.out.println("*******PRUEBA PROMEDIOS*********");
         Prueba_Promedios promedios = new Prueba_Promedios();
         promedios.runPrueba(pathPromedioVarCorridas,scalePromedioVarCorridas);
@@ -121,7 +121,7 @@ public class SimulacionPruebas {
         System.out.println("*******PRUEBA CORRIDAS*********");
         Prueba_Corridas corridas = new Prueba_Corridas();
         corridas.runPrueba(pathPromedioVarCorridas, scalePromedioVarCorridas);
-        System.out.println("");*/
+        System.out.println("");
         
         System.out.println("*******PRUEBA HUECOS CON DIGS*********");
         Prueba_HuecosDigs huecos_digitos = new Prueba_HuecosDigs();
@@ -131,7 +131,7 @@ public class SimulacionPruebas {
         System.out.println("");
         
         
-        /*String pathHuecosNums = "./" + folder + "/" + "huecosnums.txt";
+        String pathHuecosNums = "./" + folder + "/" + "huecosnums.txt";
                
         System.out.println("*******PRUEBA HUECOS CON NUMS*********");
         int maxTamHueco = 4;//Los huecos empiezan en 0 hasta maxTamHueco-1
@@ -168,7 +168,7 @@ public class SimulacionPruebas {
         System.out.println("Ver tabla huecos en: tablahuecosnumsX.csv");
         System.out.println("");
         
-        /*System.out.println("*******PRUEBA POKER*********");
+        System.out.println("*******PRUEBA POKER*********");
         String pathPoker = "./" + folder + "/" + "pruebapoker.txt";
         Prueba_Poker poker = new Prueba_Poker();
         poker.runPrueba(pathPoker, folder);
@@ -185,7 +185,7 @@ public class SimulacionPruebas {
         series.runPrueba(pathSeriesNums, folder,scalePoker,celdas,tamanocelda);
         System.out.println("Ver frecuencias en: frecuenciaseries.csv");
         System.out.println("Ver tabla tablaseries.csv");
-        System.out.println("");*/
+        System.out.println("");
     }
     private static void probarPruebas(String path, int scale, String folder) {
         System.out.println("*******PRUEBA PROMEDIOS*********");
